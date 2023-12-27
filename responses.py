@@ -1,6 +1,10 @@
 from random import randint
 import requests
 import time
+import os
+
+rapidapi_key = str(os.getenv('RAPIDAPI_KEY'))
+rapidapi_host = str(os.getenv('RAPIDAPI_HOST'))
 
 def handle_response(message):
     if message == '?help':
@@ -13,8 +17,8 @@ def handle_response(message):
 
         url = "https://advanced-movie-search.p.rapidapi.com/genre/movie/list"
         headers = {
-            "X-RapidAPI-Key": "e0034ad13fmshd9c514fcd352d4fp1dcda1jsn5aa0116e1745",
-            "X-RapidAPI-Host": "advanced-movie-search.p.rapidapi.com"
+            "X-RapidAPI-Key": rapidapi_key,
+            "X-RapidAPI-Host": rapidapi_host
         }
         response = requests.get(url, headers=headers).json()
 
@@ -25,8 +29,8 @@ def handle_response(message):
 
         time.sleep(1)
         headers = {
-            "X-RapidAPI-Key": "e0034ad13fmshd9c514fcd352d4fp1dcda1jsn5aa0116e1745",
-            "X-RapidAPI-Host": "advanced-movie-search.p.rapidapi.com"
+            "X-RapidAPI-Key": rapidapi_key,
+            "X-RapidAPI-Host": rapidapi_host
         }
         url = "https://advanced-movie-search.p.rapidapi.com/discover/movie"
         querystring = {"with_genres":category_id}
